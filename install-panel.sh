@@ -550,6 +550,21 @@ function main {
 
 }
 
+# Let's Encrypt
+echo "Installing Let's Encrypt please wait!"
+read YES
+read DOMAIN
+if [ "YES" == "y" ]; then
+  sudo add-apt-repository ppa:certbot/certbot
+  sudo apt install python-certbot-nginx
+      sudo ufw allow 'Nginx Full'
+      sudo ufw delete allow 'Nginx HTTP'
+      sudo certbot --nginx -d $DOMAIN
+   elif  [ "$NO" == "n" ]; then
+   fi
+}
+
+
 function goodbye {
   print_brake 62
   echo "* Pterodactyl Panel successfully installed @ $FQDN"
